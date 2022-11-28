@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container p-2">
     <form>
       <!-- Display Name -->
       <div class="field">
@@ -37,7 +37,11 @@
       <!-- Submit -->
       <div class="field">
         <div class="control">
-          <button class="button is-link">Get started</button> 
+          <router-link to="/home">
+            <button class="button is-link">
+              Get started
+            </button> 
+          </router-link>
         </div>
       </div>
     </form>

@@ -14,7 +14,6 @@ library.add(faAt, faLock, faUserAstronaut)
 // Firebase Initialization
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
-import { getAuth } from "firebase/auth";
 import { getDatabase } from "firebase/database";
 
 const firebaseConfig = {
@@ -30,9 +29,9 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
-const database = getDatabase(app);
-const auth = getAuth(app);
+
+export const analytics = getAnalytics(app);
+export const db = getDatabase(app);
 
 createApp(App)
     .use(router)

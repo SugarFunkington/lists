@@ -7,9 +7,10 @@ require('@/assets/main.scss')
 //  FontAwesome Setup
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { faAt, faLock, faUserAstronaut } from '@fortawesome/free-solid-svg-icons'
+import { faAt, faLock, faUserAstronaut, faArrowRight } from '@fortawesome/free-solid-svg-icons'
+import { faGoogle, faFacebook, faTwitter } from '@fortawesome/free-brands-svg-icons'
 
-library.add(faAt, faLock, faUserAstronaut)
+library.add(faAt, faLock, faUserAstronaut, faArrowRight, faGoogle, faFacebook, faTwitter)
 
 // Firebase Initialization
 import { initializeApp } from "firebase/app";
@@ -27,7 +28,6 @@ const firebaseConfig = {
   databaseURL: "https://listit-437fb-default-rtdb.europe-west1.firebasedatabase.app/"
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
 export const analytics = getAnalytics(app);

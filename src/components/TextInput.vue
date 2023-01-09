@@ -2,12 +2,13 @@
     <div class="field">
         <label :for="label" class="label">{{label}}</label>
         <div class="control has-icons-left">
-          <input class="input" :type='type' :placeholder="placeholder" :id="label"/>
+          <input class="input is-rounded" :type='type' :placeholder="placeholder" :id="label" :name="name" v-model="value"/>
           <span class="icon is-small is-left">
             <font-awesome-icon :icon="('fa-solid fa-'+icon)"/>
           </span>
         </div>
-      </div>
+        <p class="help is-danger">{{errorMessage}}</p>
+    </div>
 </template>
 
 <script>
@@ -17,11 +18,16 @@ export default {
 </script>
 
 <script setup>
-/* eslint-disable */
-// import { useField } from 'vee-validate';
-import { defineProps } from 'vue';
+
+import { defineProps, toRef } from 'vue';
+import { useField } from 'vee-validate';
+// import * as yup from 'yup';
 
 const props = defineProps({
+    name: {
+        type: String,
+        required:true,
+    },
     type: {
         type: String,
         required: true,
@@ -38,7 +44,13 @@ const props = defineProps({
         type: String,
         required: true,
     }
-})
+});
+
+
+const nameRef = toRef(props, 'name');
+
+const { errorMessage, value } = useField(nameRef);
+
 </script>
 
 

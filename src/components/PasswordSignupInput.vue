@@ -2,7 +2,7 @@
     <div class="field">
         <label for="password" class="label">Password</label>
         <div class="control has-icons-left">
-          <input class="input" type="password" placeholder="Shh we won't tell..." id="password" name="password" v-model="value" @keyup="checkValidity(value)"/>
+          <input class="input is-rounded" type="password" placeholder="Shh we won't tell..." id="password" name="password" v-model="value" @keyup="checkValidity(value)"/>
           <span class="icon is-small is-left">
             <font-awesome-icon icon="fa-solid fa-lock"/>
           </span>

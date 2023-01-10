@@ -33,61 +33,24 @@
 
     <hr/>
 
-    <form @submit.prevent="onSubmit">
-      <!-- Email -->
-      <TextInput type="email" label="Email" placeholder="someone@email.com" icon="at" name="email"/>
-
-      <!-- Submit -->
-      <div class="field">
-        <div class="control">
-          <button type="submit" class="button is-primary is-rounded">
-            <span class="icon">
-              <font-awesome-icon icon="fa-solid fa-arrow-right"/>
-            </span>
-          </button>
-        </div>
-      </div>
-    </form>
+    <!-- Email -->
+    <router-link to="/email">
+      <button class="button is-fullwidth is-rounded mt-4">
+        <span class="icon">
+          <font-awesome-icon icon="fa-solid fa-envelope"/>
+        </span>
+        <span>
+          Continue with Email
+        </span>
+      </button>
+    </router-link>
 
   </div>
 </template>
 
-<script>
-export default {
-    name: "EmailLoginView",
-    components: { TextInput }
-}
-</script>
+
 
 
 <script setup>
-
-import { useForm } from 'vee-validate'
-import * as yup from 'yup'
-import TextInput from '@/components/TextInput.vue'
-
-// Validation schema
-const schema = yup.object({
-  email: yup.string().required().email('Email is required'),
-});
-
-useForm({
-  validationSchema: schema,
-});
-
-// Handle form submissions
-const { handleSubmit } = useForm({
-  validationSchema: schema
-});
-
-function onInvalidSubmit({ values, errors, results }) {
-  console.log(values);
-  console.log(errors);
-  console.log(results)
-}
-
-const onSubmit = handleSubmit(values => {
-  alert(JSON.stringify(values, null, 2))
-}, onInvalidSubmit)
 
 </script>

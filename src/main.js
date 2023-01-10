@@ -1,4 +1,5 @@
 import { createApp } from 'vue'
+import { createPinia } from 'pinia'
 import App from './App.vue'
 import router from './router'
 
@@ -7,13 +8,14 @@ require('@/assets/main.scss')
 //  FontAwesome Setup
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { faAt, faLock, faUserAstronaut, faArrowRight } from '@fortawesome/free-solid-svg-icons'
+import { faAt, faLock, faUserAstronaut, faArrowRight, faArrowLeft, faEnvelope } from '@fortawesome/free-solid-svg-icons'
 import { faGoogle, faFacebook, faTwitter } from '@fortawesome/free-brands-svg-icons'
 
-library.add(faAt, faLock, faUserAstronaut, faArrowRight, faGoogle, faFacebook, faTwitter)
+library.add(faAt, faLock, faUserAstronaut, faArrowRight, faArrowLeft, faEnvelope, faGoogle, faFacebook, faTwitter)
 
 // Firebase Initialization
 import { initializeApp } from "firebase/app";
+import { getAuth } from "firebase/auth";
 import { getAnalytics } from "firebase/analytics";
 import { getDatabase } from "firebase/database";
 
@@ -28,12 +30,16 @@ const firebaseConfig = {
   databaseURL: "https://listit-437fb-default-rtdb.europe-west1.firebasedatabase.app/"
 };
 
+const pinia = createPinia()
 const app = initializeApp(firebaseConfig);
 
-export const analytics = getAnalytics(app);
-export const db = getDatabase(app);
+const auth = getAuth(app)
+const analytics = getAnalytics(app);
+const db = getDatabase(app);
+
+export { auth, analytics, db }
 
 createApp(App)
-    .use(router)
+    .use(router, pinia)
     .component('font-awesome-icon', FontAwesomeIcon)
     .mount('#app')

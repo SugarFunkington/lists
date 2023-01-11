@@ -40,6 +40,7 @@ const db = getDatabase(app);
 export { auth, analytics, db }
 
 createApp(App)
-    .use(router, pinia)
+    .use(router)
+    .use(pinia)
     .component('font-awesome-icon', FontAwesomeIcon)
     .mount('#app')

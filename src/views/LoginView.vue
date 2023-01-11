@@ -2,7 +2,7 @@
   <div class="container p-2">
 
     <!-- Google -->
-    <button class="button is-fullwidth is-rounded mt-4">
+    <button class="button is-fullwidth is-rounded mt-4" @click="store.googleSignIn">
       <span class="icon">
         <font-awesome-icon icon="fa-brands fa-google"/>
       </span>
@@ -48,9 +48,11 @@
   </div>
 </template>
 
-
-
-
 <script setup>
+
+import { useAuthStore } from "@/store/useAuth"
+
+const store = useAuthStore()
+
 
 </script>

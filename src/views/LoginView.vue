@@ -46,13 +46,19 @@
     </router-link>
 
   </div>
+
+  <button class="button is-rounded" @click="store.checkUser">Check User</button>
+  <button class="button is-rounded" @click="store.accountSignOut">Signout</button>
 </template>
 
 <script setup>
-
+import { onMounted } from 'vue'
 import { useAuthStore } from "@/store/useAuth"
 
 const store = useAuthStore()
 
+onMounted(() => {
+  store.getGoogleRedirectResult()
+})
 
 </script>

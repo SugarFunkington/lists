@@ -1,4 +1,4 @@
-<template>
+<template>  
   <div class="container p-2">
 
     <!-- Google -->
@@ -51,14 +51,21 @@
   <button class="button is-rounded" @click="store.accountSignOut">Signout</button>
 </template>
 
+<script>
+  export default {
+      name: "LoginView"
+  }
+</script>
+
 <script setup>
-import { onMounted } from 'vue'
-import { useAuthStore } from "@/store/useAuth"
+  import { onMounted } from 'vue'
+  import { useAuthStore } from '@/store/useAuth'
 
-const store = useAuthStore()
+  const store = useAuthStore()
 
-onMounted(() => {
-  store.getGoogleRedirectResult()
+  onMounted(() => {
+    if (localStorage.user === 'Google') {
+      store.getGoogleRedirectResult()
+    }
 })
-
 </script>

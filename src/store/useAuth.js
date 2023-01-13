@@ -1,5 +1,4 @@
 
-import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
 
 // Firebase imports
@@ -9,22 +8,18 @@ import router from '@/router/index.js'
 
 export const useAuthStore = defineStore('authStore', () => {
 
-    const state = ref({
-        user: null
-    })
-
-    const setState = computed((payload) => state.value.user = payload)
-
     function googleSignIn() {
         let provider = new GoogleAuthProvider();
 
         signInWithRedirect(auth, provider);
+
+        localStorage.setItem('user', 'Google');
     }
     
     function getGoogleRedirectResult() {
         getRedirectResult(auth)
             .then((result) => {
-                console.log('3')
+                router.push('/home')
                 // This gives you a Google Access Token. You can use it to access Google APIs.
                 const credential = GoogleAuthProvider.credentialFromResult(result);
                 const token = credential.accessToken;
@@ -33,14 +28,9 @@ export const useAuthStore = defineStore('authStore', () => {
                 const user = result.user;
                 
                 console.log(`Success: ${user}, Token: ${token}`);
-                
-                router.push('/home')
     
             }).catch((error) => {
                 // Handle Errors here.
-                console.log('4')
-                console.log(error)
-    
                 const errorCode = error.code;
                 const errorMessage = error.message;
     
@@ -64,23 +54,23 @@ export const useAuthStore = defineStore('authStore', () => {
             if (user) {
               // User is signed in, see docs for a list of available properties
               // https://firebase.google.com/docs/reference/js/firebase.User
-              console.log('signed in')
               const uid = user.uid;
-              console.log(uid)
+              console.log(`Signed in: ${uid}`)
               // ...
             } else {
               // User is signed out
               // ...
-              console.log('nope')
+              console.log('No user')
             }
           });
     }
 
     function accountSignOut() {
         signOut(auth).then(() => {
-            console.log('signed out')
+            localStorage.user = null
+            router.push('/')
         })
     }
 
-    return { state, setState, googleSignIn, facebookSignIn, twitterSignIn, checkUser, getGoogleRedirectResult, accountSignOut }
+    return { googleSignIn, facebookSignIn, twitterSignIn, checkUser, getGoogleRedirectResult, accountSignOut }
 })

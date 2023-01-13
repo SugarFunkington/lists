@@ -1,6 +1,7 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
-import LoginView from '../views/LoginView.vue'
-import EmailLoginView from '../views/EmailLoginView.vue'
+import LoginView from '@/views/LoginView.vue'
+import EmailLoginView from '@/views/EmailLoginView.vue'
+import LoadingView from '@/views/LoadingView.vue'
 
 const routes = [
   {
@@ -12,6 +13,11 @@ const routes = [
     path: '/email',
     name: 'emailLogin',
     component: EmailLoginView
+  },
+  {
+    path: '/loading',
+    name: 'loading',
+    component: LoadingView
   },
   {
     path: '/home',

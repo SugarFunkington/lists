@@ -8,10 +8,10 @@ require('@/assets/main.scss')
 //  FontAwesome Setup
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { faAt, faLock, faUserAstronaut, faArrowRight, faArrowLeft, faEnvelope } from '@fortawesome/free-solid-svg-icons'
+import { faTags, faUserPlus, faPlus, faAt, faLock, faUserAstronaut, faArrowRight, faArrowLeft, faEnvelope } from '@fortawesome/free-solid-svg-icons'
 import { faGoogle, faFacebook, faTwitter } from '@fortawesome/free-brands-svg-icons'
 
-library.add(faAt, faLock, faUserAstronaut, faArrowRight, faArrowLeft, faEnvelope, faGoogle, faFacebook, faTwitter)
+library.add(faTags,faUserPlus, faPlus, faAt, faLock, faUserAstronaut, faArrowRight, faArrowLeft, faEnvelope, faGoogle, faFacebook, faTwitter)
 
 // Firebase Initialization
 import { initializeApp } from "firebase/app";

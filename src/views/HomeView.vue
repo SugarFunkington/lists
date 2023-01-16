@@ -5,6 +5,12 @@
 
   <button class="button is-primary" @click="store.checkUser()">Check user</button>
 
+  <ListItem />
+  <ListItem />
+  <ListItem />
+
+
+  <!-- Action Buttons -->
   <div class="columns is-gapless is-mobile is-centered action-buttons-container">
     <!-- Share -->
     <div class="column is-3 has-text-centered">
@@ -38,6 +44,7 @@
 
 <script setup>
 import { useAuthStore } from '@/store/useAuth'
+import ListItem from '@/components/ListItem.vue'
 
 const store = useAuthStore()
 

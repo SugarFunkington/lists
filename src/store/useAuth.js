@@ -19,7 +19,6 @@ export const useAuthStore = defineStore('authStore', () => {
     function getGoogleRedirectResult() {
         getRedirectResult(auth)
             .then((result) => {
-                router.push('/home')
                 // This gives you a Google Access Token. You can use it to access Google APIs.
                 const credential = GoogleAuthProvider.credentialFromResult(result);
                 const token = credential.accessToken;
@@ -28,6 +27,7 @@ export const useAuthStore = defineStore('authStore', () => {
                 const user = result.user;
                 
                 console.log(`Success: ${user}, Token: ${token}`);
+                router.push('/home')
     
             }).catch((error) => {
                 // Handle Errors here.

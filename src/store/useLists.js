@@ -5,27 +5,27 @@ export const useListsStore = defineStore('listStore', () => {
 
     const list = ref([{
             header: "Order something new for the garden",
-            subheader: "Better make it something nice!",
+            subheader: "1 Better make it something nice!",
+            done: true
+        },{
+            header: "Order something new for the garden",
+            subheader: "2 Better make it something nice!",
             done: false
         },{
             header: "Order something new for the garden",
-            subheader: "Better make it something nice!",
+            subheader: "3 Better make it something nice!",
             done: false
         },{
             header: "Order something new for the garden",
-            subheader: "Better make it something nice!",
+            subheader: "4 Better make it something nice!",
             done: false
         },{
             header: "Order something new for the garden",
-            subheader: "Better make it something nice!",
+            subheader: "5 Better make it something nice!",
             done: false
         },{
             header: "Order something new for the garden",
-            subheader: "Better make it something nice!",
-            done: false
-        },{
-            header: "Order something new for the garden",
-            subheader: "Better make it something nice!",
+            subheader: "6 Better make it something nice!",
             done: false
         },{
             header: "Order something new for the garden",

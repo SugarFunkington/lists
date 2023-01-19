@@ -4,12 +4,12 @@
             <div class="content">
                 <div class="columns is-mobile">
                     <div class="column is-10">
-                        <h3>Order something new for the garden</h3>
-                        <p>Better make it something nice!</p>
+                        <h3>{{ props.header }}</h3>
+                        <p>{{ props.subheader }}</p>
                     </div>
                     <div class="column is-2">
-                        <input type="checkbox" id="checkbox" v-model="checked"/>
-                        <label for="checkbox">{{ checked }}</label>
+                        <input type="checkbox" :id="props.id" v-model="check.state"/>
+                        {{ check.state }}
                     </div>
                 </div>
             </div>
@@ -24,15 +24,24 @@ export default {
 </script>
 
 <script setup>
-import { reactive } from 'vue'
+import { defineProps, reactive } from 'vue'
 
-let checked = reactive(true);
-let selected = false;
+const props = defineProps({
+    header: String,
+    subheader: String,
+    done: Boolean,
+    id: Number
+})
+
+let check = reactive({
+                state: props.done
+            });
+
 
 function toggleSelected() {
-    selected = !selected;
-    console.log(selected)
+   check.state = !check.state
 }
+
 </script>
 
 <style scoped>

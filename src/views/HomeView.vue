@@ -5,10 +5,7 @@
 
   <button class="button is-primary" @click="store.checkUser()">Check user</button>
 
-  <ListItem />
-  <ListItem />
-  <ListItem />
-
+  <FullList />
 
   <!-- Action Buttons -->
   <div class="columns is-gapless is-mobile is-centered action-buttons-container">
@@ -44,8 +41,7 @@
 
 <script setup>
 import { useAuthStore } from '@/store/useAuth'
-import ListItem from '@/components/ListItem.vue'
-
+import FullList from '@/components/FullList.vue'
 const store = useAuthStore()
 
 </script>

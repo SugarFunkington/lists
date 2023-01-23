@@ -1,5 +1,5 @@
 <template>
-    <div class="card" @click="toggleSelected()" :class="{done: check.state}">
+    <div class="card" @click="toggleSelected()" :class="{done: check.state, 'focussed-item': focus.state}" :id="props.id">
         <div class="card-content">
             <div class="content">
                 <div class="columns is-mobile is-vcentered">
@@ -9,8 +9,8 @@
                     </div>
                     <div class="column is-2">
                         <div class="round">
-                            <input type="checkbox" :id="props.id" v-model="check.state"/>
-                            <label :for="props.id"></label>
+                            <input type="checkbox" :id="`checkbox-for-${props.id}`" v-model="check.state"/>
+                            <label :for="`checkbox-for-${props.id}`"></label>
                         </div>
                     </div>
                 </div>
@@ -26,23 +26,34 @@ export default {
 </script>
 
 <script setup>
-import { defineProps, reactive } from 'vue'
+import { reactive } from 'vue'
 
+// eslint-disable-next-line
 const props = defineProps({
     header: String,
     subheader: String,
     done: Boolean,
-    id: Number
+    id: String,
+    inFocus: Boolean
 })
 
 let check = reactive({
                 state: props.done
             });
 
+let focus = reactive({
+    state: props.inFocus
+})
+
 
 function toggleSelected() {
    check.state = !check.state
 }
+
+// eslint-disable-next-line
+defineExpose({
+    props, focus
+})
 
 </script>
 
@@ -105,5 +116,10 @@ function toggleSelected() {
 
 label {
     pointer-events: none;
+}
+
+.focussed-item {
+    border:1px solid red;
+    transform: scale(1.075);
 }
 </style>

@@ -11,6 +11,7 @@
         class="list-item"
         />
     </div>
+    <div class="highlight-area"></div>
 
 </template>
 
@@ -25,6 +26,7 @@ import { onMounted, ref } from 'vue';
 import ListItem from '@/components/ListItem.vue'
 import { useListsStore } from '@/store/useLists'
 import 'intersection-observer'
+//import { useScroll } from '@vueuse/core'
 
 const store = useListsStore();
 let listItems = ref(null)
@@ -33,8 +35,8 @@ let listItems = ref(null)
 onMounted(() => {
   let options = {
     root: null,
-    rootMargin: '-80% 0% -17% 0%',
-    threshold:0.01
+    rootMargin: '-74% 0% -23% 0%',
+    threshold:0.05
   }
   
   let setFocusListItem = (entries) => {
@@ -66,6 +68,16 @@ onMounted(() => {
   flex-direction:column-reverse;
   padding-bottom: 8rem;
   padding-top:70vh;
+}
+
+.highlight-area {
+  position:fixed;
+  top:74%;
+  right:0;
+  bottom:23%;
+  left:0;
+  background-color:red;
+  opacity:0.6;
 }
 
 </style>

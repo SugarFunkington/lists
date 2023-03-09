@@ -1,4 +1,5 @@
 <template>
+  <div id="scroll-area">
     <div class="section">
         <ListItem v-for="(listItem, index) in store.list" 
         :header="listItem.header" 
@@ -12,6 +13,7 @@
         />
     </div>
     <div class="highlight-area"></div>
+  </div>
 
 </template>
 
@@ -22,17 +24,19 @@ export default {
 </script>
 
 <script setup>
-import { onMounted, ref } from 'vue';
+/* eslint-disable */ 
+import { onMounted, ref } from 'vue'
 import ListItem from '@/components/ListItem.vue'
 import { useListsStore } from '@/store/useLists'
 import 'intersection-observer'
-//import { useScroll } from '@vueuse/core'
 
 const store = useListsStore();
+
+// Intersection Observer to set focus list items
 let listItems = ref(null)
 
-
 onMounted(() => {
+
   let options = {
     root: null,
     rootMargin: '-74% 0% -23% 0%',
@@ -57,6 +61,11 @@ onMounted(() => {
   document.querySelectorAll('.list-item').forEach((listItem) => {
     observer.observe(listItem)
   })
+
+  // Set list position
+  let listRef = document.getElementById('scroll-area');
+  listRef.scrollTop = listRef.scrollHeight;
+
 })
 
 
@@ -65,6 +74,7 @@ onMounted(() => {
 <style scoped>
 .section {
   display:flex;
+  position:relative;
   flex-direction:column-reverse;
   padding-bottom: 8rem;
   padding-top:70vh;
@@ -78,6 +88,25 @@ onMounted(() => {
   left:0;
   background-color:red;
   opacity:0.6;
+}
+
+.scroll-stats {
+  position: fixed;
+  background:blue;
+  color:white;
+  top:0;
+  left:0;
+  right:0;
+}
+
+#scroll-area {
+  position:fixed;
+  top:0;
+  bottom:0;
+  left:0;
+  right:0;
+  overflow-y: scroll;
+  background-color:yellow;
 }
 
 </style>

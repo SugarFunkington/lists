@@ -120,6 +120,6 @@ label {
 
 .focussed-item {
     border:1px solid red;
-    transform: scale(1.075);
+    /* transform: scale(1.075); */
 }
 </style>

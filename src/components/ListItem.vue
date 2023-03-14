@@ -4,8 +4,8 @@
             <div class="content">
                 <div class="columns is-mobile is-vcentered">
                     <div class="column is-10" :class="{'text-strikethrough': check.state}">
-                        <h3>{{ props.header }}</h3>
-                        <p>{{ props.subheader }}</p>
+                        <h3 :class="{truncated: !focus.state}">{{ props.header }}</h3>
+                        <p :class="{truncated: !focus.state}">{{ props.subheader }}</p>
                     </div>
                     <div class="column is-2">
                         <div class="round">
@@ -61,6 +61,12 @@ defineExpose({
 .card {
     margin-bottom:24px;
     transition: 0.2s linear;
+}
+
+.truncated {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .done {
@@ -119,7 +125,9 @@ label {
 }
 
 .focussed-item {
-    border:1px solid red;
-    /* transform: scale(1.075); */
+    transform: scale(1.05);
+    box-shadow:0.25em 0.75em 1.25em -0.125em rgb(10 10 10 / 25%), 0 0px 0 1px rgb(10 10 10 / 2%);
+    margin-top:0.5em;
+    margin-bottom:1.5em;
 }
 </style>

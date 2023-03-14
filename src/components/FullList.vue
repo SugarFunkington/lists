@@ -107,7 +107,7 @@ onMounted(() => {
   right:0;
   bottom:22.5%;
   left:0;
-  background-color:red;
+  /* background-color:red; */
   opacity:0.6;
 }
 

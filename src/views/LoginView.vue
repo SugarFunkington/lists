@@ -2,7 +2,7 @@
   <div class="container p-2">
 
     <!-- Google -->
-    <button class="button is-fullwidth is-rounded mt-4" @click="store.googleSignIn">
+    <button class="button is-fullwidth is-rounded mt-4" @click="store.googleSignIn()">
       <span class="icon">
         <font-awesome-icon icon="fa-brands fa-google"/>
       </span>
@@ -47,8 +47,8 @@
 
   </div>
 
-  <button class="button is-rounded" @click="store.checkUser">Check User</button>
-  <button class="button is-rounded" @click="store.accountSignOut">Signout</button>
+  <button class="button is-rounded" @click="store.checkUser()">Check User</button>
+  <button class="button is-rounded" @click="store.accountSignOut()">Signout</button>
 </template>
 
 <script>
@@ -67,5 +67,5 @@
     if (localStorage.user === 'Google') {
       store.getGoogleRedirectResult()
     }
-})
+  })
 </script>

@@ -1,12 +1,12 @@
 
 import { defineStore } from 'pinia'
-
-// Firebase imports
-import { auth } from '../main.js'
+import { useFirebaseAuth } from 'vuefire'
 import { GoogleAuthProvider, signInWithRedirect, getRedirectResult, onAuthStateChanged, signOut } from 'firebase/auth'
 import router from '@/router/index.js'
 
 export const useAuthStore = defineStore('authStore', () => {
+
+    const auth = useFirebaseAuth()
 
     function googleSignIn() {
         let provider = new GoogleAuthProvider();

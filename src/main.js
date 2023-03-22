@@ -1,5 +1,6 @@
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
+import { VueFire, VueFireAuth } from 'vuefire'
 import App from './App.vue'
 import router from './router'
 
@@ -15,9 +16,7 @@ library.add(faTags,faUserPlus, faPlus, faAt, faLock, faUserAstronaut, faArrowRig
 
 // Firebase Initialization
 import { initializeApp } from "firebase/app";
-import { getAuth } from "firebase/auth";
-import { getAnalytics } from "firebase/analytics";
-import { getDatabase } from "firebase/database";
+import { getDatabase, ref as dbRef } from "firebase/database";
 
 const firebaseConfig = {
   apiKey: "AIzaSyA8mRfV8sYlZ-uovQRWNKVPilGl_sOLVAM",
@@ -30,17 +29,21 @@ const firebaseConfig = {
   databaseURL: "https://listit-437fb-default-rtdb.europe-west1.firebasedatabase.app/"
 };
 
-const pinia = createPinia()
-const app = initializeApp(firebaseConfig);
+const pinia = createPinia();
 
-const auth = getAuth(app)
-const analytics = getAnalytics(app);
-const db = getDatabase(app);
+const firebaseApp = initializeApp(firebaseConfig);
 
-export { auth, analytics, db }
+export const db = getDatabase(firebaseApp);
+export const todosRef = dbRef(db, 'todos')
 
 createApp(App)
     .use(router)
     .use(pinia)
+    .use(VueFire, {
+      firebaseApp,
+      modules: [
+        VueFireAuth(),
+      ],
+    })
     .component('font-awesome-icon', FontAwesomeIcon)
     .mount('#app')

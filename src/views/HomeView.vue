@@ -1,11 +1,11 @@
 <template>
-  <!-- <router-link to="/">
+  <router-link to="/">
     <button class="button is-secondary" @click="store.accountSignOut()">Sign Out</button>
   </router-link>
 
-  <button class="button is-primary" @click="store.checkUser()">Check user</button> -->
+  <button class="button is-primary" @click="store.checkUser()">Check user</button>
 
-  <FullList />
+  <!-- <FullList /> -->
 
   <!-- Action Buttons -->
   <div class="columns is-gapless is-mobile is-centered action-buttons-container">
@@ -43,7 +43,10 @@
 /* eslint-disable */
 import { useAuthStore } from '@/store/useAuth'
 import FullList from '@/components/FullList.vue'
+
 const store = useAuthStore()
+
+
 
 </script>
 
